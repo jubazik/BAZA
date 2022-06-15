@@ -2,7 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 
-
+# подключаем базу данных
 class Config:
     JSON_AS_ASCII = False
     SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'main.db'}"
