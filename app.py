@@ -1,4 +1,4 @@
-from api import app
+from api import app, Api
 from config import Config
 
 
@@ -6,4 +6,4 @@ from config import Config
 
 
 if __name__ == '__main__':
-    app.run(debng=Config.DEBUG, port=Config.PORT)
+    app.run(debug=Config.DEBUG, port=Config.PORT)

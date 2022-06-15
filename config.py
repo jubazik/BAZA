@@ -10,4 +10,4 @@ class Config:
     DEBUG = True
     PORT = 5000
     SECRET_KEY = 'supeR secret KeyS'
-    TEST_DATABASE_URI = F"SQLITE:///{BASE_DIR / 'main.db'}"
+    TEST_DATABASE_URI = F"SQLITE:///{BASE_DIR / 'test.db'}"
