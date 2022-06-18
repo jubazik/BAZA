@@ -6,11 +6,11 @@ import datetime
 class Payments:
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date, default=datetime.datetime.now())
-    cash = db.Column(db.TEXT, unique=False)
+    cash = db.Column(db.TEXT, unique=True)
     author_id = db.Column(db.Integer, db.ForeignKey(NameCard.id))
-    sun = db.Column(db.Integer, unique=False)
-    type = db.Column(db.String(32), unique=False)
-    comment = db.Column(db.Text, unique=False)
+    sun = db.Column(db.Integer, unique=True)
+    type = db.Column(db.String(32), unique=True)
+    comment = db.Column(db.Text, unique=True)
 
     def __init__(self, cash: str, author: NameCard, sun: int, type: str, comment: str):
         self.cash = cash
@@ -22,7 +22,7 @@ class Payments:
     def to_dict(self):
         return {
             "id": self.id,
-            "date": self.date,
+            # "date": self.date,
             "cash": self.cash,
             "name": self.author_id,
             "sun": self.sun,
