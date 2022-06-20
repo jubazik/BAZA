@@ -1,9 +1,11 @@
 from api import app, Api
 from api.resources.author import NameCardResource, NameListCardResource
+from api.resources.pay import PayResource
 from config import Config
 
 
-
+api.add_resource(PayResource,
+                 '/authors/<int:author_id>/pays/<int:pay_id>')
 
 
 
