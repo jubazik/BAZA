@@ -1,11 +1,11 @@
-from api import db
+from api import db, date
 from api.models.author import NameCard
-import datetime
+
 
 
 class Payments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.Date, default=datetime.datetime.now())
+    date = db.Column(db.Date, default=date)
     cash = db.Column(db.TEXT, unique=True)
     author_id = db.Column(db.Integer, db.ForeignKey(NameCard.id))
     sun = db.Column(db.Integer, unique=True)

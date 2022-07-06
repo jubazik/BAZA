@@ -1,10 +1,10 @@
-from api import db
-import datetime
+from api import db, date
+
 
 
 class NameCard(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.Date, default=datetime.datetime.now())
+    date = db.Column(db.Date, default=date)
     name = db.Column(db.String(32), unique=True)
     room = db.Column(db.Integer, unique=True)
     sun = db.relationship('Payments', backref='author', lazy='dinamic')
