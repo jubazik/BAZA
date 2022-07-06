@@ -1,4 +1,4 @@
-from api import Resource, reqparse, db
+from api import Resource, reqparse, db, request, jsonify
 from api.models.author import NameCard
 
 # GET: '/authors/<int:author_id>'
@@ -37,10 +37,11 @@ class NameListCardResource(Resource):
         return authors_list ,200
 
     def post(self):
-        parser = reqparse.RequstParser()
-        parser.add_argument('name', required=True)
-        authors_data = parser.parse_args()
-        author = NameCard(authors_data["name"])
+        # parser = reqparse.RequstParser()
+        # parser.add_argument('name', required=True)
+        # authors_data = parser.parse_args()
+        author_data = request.json
+        author = NameCard(**author_data)
         db.session.add(author)
         db.session.commit()
         return author.to_dict(), 201
