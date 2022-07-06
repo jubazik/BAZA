@@ -3,7 +3,7 @@ from api.models.author import NameCard
 import datetime
 
 
-class Payments:
+class Payments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date, default=datetime.datetime.now())
     cash = db.Column(db.TEXT, unique=True)
