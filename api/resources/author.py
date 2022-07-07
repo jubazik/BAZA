@@ -16,10 +16,13 @@ class NameCardResource(Resource):
         # parser = reqparse.RequstParser()
         # parser.add_argument('name', required=True)
         # author_data = parser.parse_args()
+        new_author = request.json
         author = NameCard.query.get(author_id)
         if author is None:
             return {"Error": f"Author id={author_id} not found"}, 404
-        author.name = author_data['name']
+        # author.name = author_data['name']
+        for key, value in new_author.items():
+            setattr(author, key, value)
         db.session.commit()
         return author.to_dict()
 

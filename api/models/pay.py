@@ -2,6 +2,7 @@ from api import db, date
 from api.models.author import NameCard
 
 
+"""Таблица для внесение платежа """
 
 class Payments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
