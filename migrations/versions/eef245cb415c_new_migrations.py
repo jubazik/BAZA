@@ -1,8 +1,8 @@
-"""empty message
+"""new migrations
 
-Revision ID: 095b296ac8d5
+Revision ID: eef245cb415c
 Revises: 
-Create Date: 2022-07-06 17:14:11.438514
+Create Date: 2022-07-07 08:20:01.769982
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '095b296ac8d5'
+revision = 'eef245cb415c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,10 +21,9 @@ def upgrade():
     op.create_table('name_card',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('date', sa.Date(), nullable=True),
-    sa.Column('name', sa.String(length=32), nullable=True),
-    sa.Column('room', sa.Integer(), nullable=True),
+    sa.Column('name', sa.String(length=32), server_default='Default', nullable=False),
+    sa.Column('room', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name'),
     sa.UniqueConstraint('room')
     )
     op.create_table('payments',
