@@ -1,6 +1,7 @@
 from api import db, date
 
 
+"""Карточка для создания контрагента обязательным аргументом является name room не может быть оденаковым как у всех """
 
 class NameCard(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -10,7 +11,7 @@ class NameCard(db.Model):
     room = db.Column(db.Integer, nullable=False, server_default='Default')
     sun = db.relationship('Payments', backref='author', lazy='dynamic')
 
-    def __init__(self, name, surname='Нет записи', room = 'Нет записи'):
+    def __init__(self, name, surname = 'Нет записи', room = 'нет записи'):
         self.name = name
         self.surname = surname
         self.room = room
