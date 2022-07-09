@@ -1,48 +1,29 @@
-from api import Resource, reqparse, db
+from api import Resource, reqparse, db, jsonify, request
 from api.models.author import NameCard
 from api.models.pay import Payments
 
 
-
 class PayResource(Resource):
     def get(self, author_id, pay_id):
-        pay = Payments.query.get(pay_id)
-        if pay:
-            return pay.to_dict(), 200
-
-        return f"Нет записи", 404
-
+        pass
 
     def put(self, pay_id):
-        parser = reqparse.RequestParser()
-        parser.add_argumen('cash')
-        parser.add_argumen('name')
-        parser.add_argumen('sum')
-        parser.add_argumen('tupe')
-        parser.add_argumen('comment')
-        new_data = parser.parse_args()
-        pay = Payments.query.get(pay_id)
-        pay.cash = new_data['cash']
-        pay.name = new_data['name']
-        pay.sum = new_data['sum']
-        pay.type = new_data['type']
-        pay.comment = new_data['comment']
-        db.session.commit()
-        return pay.to_dict()
-
+        pass
 
     def delete(self, pay_id):
-        pay = Payments.query.get(pay_id)
-        db.session.delete(pay)
+        pass
+
+
+class PaysResource(Resource):
+    def get(self):
+        pays = Payments.query.all()
+        pay = [pay.to_dict() for pay in pays]
+        return jsonify(pay)
+
+    def post(self, author_id):
+        author = NameCard.query.get(author_id)
+        new_pay = request.json
+        pay = Payments(author, **new_pay)
+        db.session.add(pay)
         db.session.commit()
-        return f'Успешно удалено'
-
-
-
-
-
-
-
-
-
-
+        return jsonify(pay)
