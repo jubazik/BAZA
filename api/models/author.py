@@ -8,7 +8,7 @@ class NameCard(db.Model):
     date = db.Column(db.Date, default=date)
     name = db.Column(db.String(32), unique=False)
     surname = db.Column(db.String(32), nullable=False, server_default='Default')
-    room = db.Column(db.Integer, nullable=False, server_default='Default')
+    room = db.Column(db.String, nullable=False, server_default='Default')
     sun = db.relationship('Payments', backref='author', lazy='dynamic')
 
     def __init__(self, name, surname = 'Нет записи', room = 'нет записи'):

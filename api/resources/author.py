@@ -13,7 +13,7 @@ class NameCardResource(Resource):
 
 
 
-    """PUT запрос на изменение контрагенты по id  """
+    """PUT запрос на изменение контрагентa по id  """
     def put(self, author_id):
         """не реализован!!!"""
         new_author = request.json
